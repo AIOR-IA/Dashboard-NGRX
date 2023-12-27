@@ -1,5 +1,8 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -8,7 +11,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
-  private fb = inject(FormBuilder)
+  private fb = inject(FormBuilder);
+  private authService = inject( AuthService );
+  private router = inject( Router )
   constructor() { }
 
   myForm:FormGroup = this.fb.group({
@@ -22,17 +27,20 @@ export class RegisterComponent implements OnInit {
   }
 
   public saveUser() {
-    // if( this.myForm.valid ) {
-    //     this.trimValues();
-    //     this.shortenBlankSpaces();
-    //     return;
-    // }
-    // else {
-    //   this.myForm.markAllAsTouched();
-    //   return;
-    // }
-    console.log(this.myForm.valid)
-    console.log(this.myForm.value)
+    if ( this.myForm.invalid ) return;
+
+    const { username, email, password } = this.myForm.value;
+    this.authService.createUser(username, email, password)
+      .then( credentials => {
+        this.router.navigateByUrl('/dashboard')
+      })
+      .catch( error => {
+        Swal.fire({
+          title: "error",
+          text: error.message,
+          icon: "error"
+        });
+      })
 
   }
 
