@@ -29,8 +29,23 @@
               </div>
             </div>
             <div class="form-group">
-              <button class="btn btn-primary submit-btn btn-block" (click)= "saveUser()">Login</button>
+              <button class="btn btn-primary submit-btn btn-block"
+                      type="button"
+                      [disabled]="myForm.invalid"
+                      (click)= "saveUser()"
+                      *ngIf="!isLoading">
+                      Login
+              </button>
+              <button class="btn btn-primary submit-btn btn-block"
+                      type="button"
+                      [disabled]="true"
+                      (click)= "saveUser()"
+                      *ngIf="isLoading">
+                      <i class="fa fa-spin fa-sync"></i>
+                      Wait...
+              </button>
             </div>
+
 
 
             <div class="text-block text-center my-3">
