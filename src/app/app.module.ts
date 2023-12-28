@@ -23,11 +23,16 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireAuthModule  } from '@angular/fire/compat/auth';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { environment } from '../environments/environment';
+import { IncomeOrdenPipe } from './pipes/income-orden.pipe';
 
 //ngrx
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { appReducers } from './app.reducer';
+
+//chartsJS
+import { NgChartsModule } from 'ng2-charts';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +44,8 @@ import { appReducers } from './app.reducer';
     DetailComponent,
     FooterComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    IncomeOrdenPipe
   ],
   imports: [
     BrowserModule,
@@ -56,15 +62,10 @@ import { appReducers } from './app.reducer';
       trace: false, //  If set to true, will include stack trace for every dispatched action, so you can see it in trace tab jumping directly to that part of code
       traceLimit: 75, // maximum stack trace frames to be stored (in case trace option was provided as true)
     }),
-    // provideFirebaseApp(
-    //   () => initializeApp(environment.firebaseConfig)),
-    // AngularFireAuthModule,
-    // provideFirestore(() => getFirestore()),
-    // provideAuth(() => getAuth()),
+    NgChartsModule
+
   ],
-  providers: [
-    // { provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig }
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

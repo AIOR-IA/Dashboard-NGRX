@@ -6,6 +6,7 @@ import { User } from '../models/user.model';
 import { Store } from '@ngrx/store';
 import { AppState } from '../app.reducer';
 import * as authActions from '../auth/auth.actions';
+import * as incomeExpenseActions from '../income-expenses/income-expende.actions';
 
 @Injectable({
   providedIn: 'root'
@@ -33,11 +34,13 @@ export class AuthService {
             const user = User.fromFirebase( userFirestore );
             this._user = user;
             this.store.dispatch( authActions.setUser({ user }) );
+
           });
       } else {
         this._user = null;
         this.userSubscription.unsubscribe();
         this.store.dispatch( authActions.unsetUser() );
+        this.store.dispatch( incomeExpenseActions.unsetItems() );
       }
     })
   }

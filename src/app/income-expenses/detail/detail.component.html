@@ -15,11 +15,21 @@
             </thead>
 
             <tbody>
-              <tr>
-                <td>Descripción</td>
-                <td>Monto</td>
-                <td>Tipo</td>
-                <td>acciones</td>
+              <tr *ngFor="let item of items | incomeOrden ">
+                <td>{{ item.description | titlecase }}</td>
+                <td>{{ item.amount | currency }}</td>
+                <td >
+                  <span
+                    [ngClass]="(item.type === 'income') ? 'badge badge-success' : 'badge badge-warning'">
+                    {{ item.type | uppercase }}
+                  </span>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-outline-danger" (click)="deleteItem( item.uid ?? '')">
+                    <i class="fa fa-trash"></i>
+                    Delete
+                  </button>
+                </td>
               </tr>
             </tbody>
 
