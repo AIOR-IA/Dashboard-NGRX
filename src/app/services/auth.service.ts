@@ -17,19 +17,25 @@ export class AuthService {
   private store    = inject( Store<AppState> );
 
   private userSubscription!: Subscription;
+  private _user!: User | null;
+
+  get user() {
+    return this._user;
+  }
+
   constructor( ) { }
 
   initAuthListener() {
     this.auth.authState.subscribe( fireUser => {
-      console.log(fireUser)
       if( fireUser ) {
-        console.log(`${ fireUser.uid}/user`);
         this.userSubscription =  this.firestore.doc(`${fireUser.uid}/user`).valueChanges()
           .subscribe(  userFirestore => {
             const user = User.fromFirebase( userFirestore );
+            this._user = user;
             this.store.dispatch( authActions.setUser({ user }) );
           });
       } else {
+        this._user = null;
         this.userSubscription.unsubscribe();
         this.store.dispatch( authActions.unsetUser() );
       }
