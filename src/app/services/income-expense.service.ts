@@ -13,8 +13,6 @@ export class IncomeExpenseService {
   private authService = inject( AuthService );
 
   constructor() {
-    const uid = this.authService.user;
-    console.log(uid)
   }
 
   createIncomeExpense( incomeExpense : IncomeExpense) {

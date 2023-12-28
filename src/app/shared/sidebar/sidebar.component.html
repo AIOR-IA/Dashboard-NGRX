@@ -9,7 +9,7 @@
           </div>
 
           <div class="text-wrapper">
-            <p class="profile-name">Cristobal Colón</p>
+            <p class="profile-name">{{ users.username }}</p>
             <div>
               <small class="designation text-muted">Gerente</small>
             </div>
@@ -29,23 +29,24 @@
     <li class="nav-item"  [routerLink]="['income-expenses']" routerLinkActive="active">
       <a class="nav-link">
         <i class="menu-icon fa fa-clipboard-list"></i>
-        <span class="menu-title">Ingresos y Egresos</span>
+        <span class="menu-title">Incomes & Expenses</span>
       </a>
     </li>
 
     <li class="nav-item" [routerLink]="['detail']" routerLinkActive="active">
       <a class="nav-link">
         <i class="menu-icon fa fa-table"></i>
-        <span class="menu-title">Detalle</span>
+        <span class="menu-title">Details</span>
       </a>
     </li>
 
     <li class="nav-item" (click)="logout()">
       <a class="nav-link cursor">
         <i class="menu-icon fa fa-sign-out-alt"></i>
-        <span class="menu-title">Cerrar sesión</span>
+        <span class="menu-title">Sign Out</span>
       </a>
     </li>
 
   </ul>
 </nav>
+
