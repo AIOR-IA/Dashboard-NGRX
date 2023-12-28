@@ -2,9 +2,9 @@
   <div class="col-12">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Agregar Ingreso / Egreso</h4>
+          <h4 class="card-title">Add Income / Expense</h4>
           <p class="card-description">
-            Especifique el monto y el tipo
+            Specify the amount and type
           </p>
 
           <form [formGroup]="myForm">
@@ -19,22 +19,22 @@
             </div>
 
             <div class="form-group">
-                <label>Monto</label>
+                <label>Amount</label>
                 <input type="number"
                        class="form-control"
                        formControlName="amount"
                        placeholder="Amount"
                        name="amount">
                   <p>
-                    Debe de ser un monto positivo
+                    Must be greater than 0
                   </p>
               </div>
 
             <div class="form-group">
-                <label>Tipo</label>
+                <label>Type: Income - Expense</label>
                 <br>
-                <button *ngIf="type === 'income'" (click)="type= 'expense'" class="btn btn-primary btn-block">Ingreso</button>
-                <button *ngIf="type === 'expense'" (click)="type= 'income'" class="btn btn-warning btn-block">Egreso</button>
+                <button *ngIf="type === 'income'" (click)="type= 'expense'" class="btn btn-primary btn-block">Income</button>
+                <button *ngIf="type === 'expense'" (click)="type= 'income'" class="btn btn-warning btn-block">Expense</button>
             </div>
 
             <hr>
@@ -44,7 +44,7 @@
                     [disabled]="myForm.invalid"
                     (click)="saveForm()">
               <i  class="fa fa-save"></i>
-              Agregar
+              Save
             </button>
             <button type="button"
                     class="btn btn-success mr-2"
@@ -54,14 +54,7 @@
               <i class="fa fa-spin fa-sync"></i>
               Loading...
             </button>
-            <!--
-              <button disabled class="btn btn-success mr-2">
-                <i class="fa fa-spin fa-sync"></i>
-                Espere por favor...
-              </button>
-            -->
-
-            <button type="reset" class="btn btn-light" (click)="reset()">Cancelar</button>
+            <button type="reset" class="btn btn-light" (click)="reset()">Cancel</button>
 
           </form>
         </div>

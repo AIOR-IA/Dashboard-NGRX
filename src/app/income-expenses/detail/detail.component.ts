@@ -28,9 +28,22 @@ export class DetailComponent implements OnInit, OnDestroy {
     this.$incomeSubs.unsubscribe();
   }
 
-  deleteItem( uidItem: string) {
-    this.incomeExpenseService.deleteItemIncomeExpense(uidItem)
-      .then( () => Swal.fire('Delete', 'Item deleted', 'success' ))
-      .catch( error =>  Swal.fire('Error', error.message , 'error' ) )
+  deleteItem( uidItem: string, description: string) {
+    Swal.fire({
+      title: "Are you sure?",
+      text: `delete ${ description } ?`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.incomeExpenseService.deleteItemIncomeExpense(uidItem)
+          .then( () => Swal.fire('Delete', 'Item deleted', 'success' ))
+          .catch( error =>  Swal.fire('Error', error.message , 'error' ) )
+      }
+    });
+
   }
 }

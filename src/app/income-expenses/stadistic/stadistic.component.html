@@ -8,14 +8,14 @@
               <i class="fa fa-money-bill-alt text-success icon-lg"></i>
             </div>
             <div class="float-right">
-              <p class="mb-0 text-right">Incomes</p>
+              <p class="mb-0 text-right"><span class="badge rounded-pill bg-success">Incomes</span></p>
               <div class="fluid-container">
                 <h3 class="font-weight-medium text-right mb-0">{{ totalIncomes | currency }}</h3>
               </div>
             </div>
           </div>
           <p class="text-muted mt-3 mb-0">
-            <i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i> {{ incomes }} Items
+            <i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i> {{ incomes  }} Items
           </p>
         </div>
       </div>
@@ -30,9 +30,9 @@
                 <i class="fa fa-shipping-fast text-danger icon-lg"></i>
               </div>
               <div class="float-right">
-                <p class="mb-0 text-right">Expenses</p>
+                <p class="mb-0 text-right"><span class="badge rounded-pill bg-warning">Expenses</span></p>
                 <div class="fluid-container">
-                  <h3 class="font-weight-medium text-right mb-0">{{ totalExpenses }}</h3>
+                  <h3 class="font-weight-medium text-right mb-0">{{ totalExpenses | currency }}</h3>
                 </div>
               </div>
             </div>
@@ -55,7 +55,7 @@
                   <i class="fa fa-building text-info icon-lg"></i>
                 </div>
                 <div class="float-right">
-                  <p class="mb-0 text-right">Diferencia</p>
+                  <p class="mb-0 text-right">Difference</p>
                   <div class="fluid-container">
                     <h3 [ngClass]="{
                       'text-success': totalIncomes - totalExpenses >= 0,

@@ -2,14 +2,14 @@
   <div class="col-12">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Detalle de ingreso egreso</h4>
+          <h4 class="card-title">Detail of Income - Expense</h4>
 
           <table class="table">
             <thead>
               <tr>
-                <th>Descripción</th>
-                <th>Monto</th>
-                <th>Tipo</th>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Type</th>
                 <th></th>
               </tr>
             </thead>
@@ -25,7 +25,7 @@
                   </span>
                 </td>
                 <td>
-                  <button type="button" class="btn btn-outline-danger" (click)="deleteItem( item.uid ?? '')">
+                  <button type="button" class="btn btn-outline-danger" (click)="deleteItem( item.uid ?? '', item.description)">
                     <i class="fa fa-trash"></i>
                     Delete
                   </button>

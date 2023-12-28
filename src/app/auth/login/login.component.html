@@ -3,11 +3,11 @@
   <div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one">
     <div class="row w-100">
       <div class="col-lg-4 mx-auto">
-        <h2 class="text-center mb-4" style="color: white;">Ingresar</h2>
+        <h2 class="text-center mb-4" style="color: white;">LOGIN</h2>
         <div class="auto-form-wrapper">
           <form autocomplete="off" [formGroup]="myForm">
             <div class="form-group">
-              <label class="label">Usuario</label>
+              <label class="label">Email</label>
               <div class="input-group">
                 <input type="email" class="form-control" placeholder="Email" formControlName="email">
                 <div class="input-group-append">
@@ -49,9 +49,10 @@
 
 
             <div class="text-block text-center my-3">
-              <span class="text-small font-weight-semibold">No estas registrado? </span>
+              <span class="text-small font-weight-semibold">Are you not registered ?</span>
               <br>
-              <a href="" class="text-black text-small" [routerLink]="['/register']">Crear una cuenta</a>
+              <a href="" class="text-black text-small" [routerLink]="['/register']">Create an account
+              </a>
             </div>
           </form>
         </div>

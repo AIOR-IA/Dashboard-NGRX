@@ -29,7 +29,7 @@ export class IncomeExpensesComponent implements OnInit, OnDestroy {
 
   myForm:FormGroup = this.fb.group({
     description: [ '', [Validators.required, Validators.minLength(3) ]],
-    amount:  [ 0, [ Validators.required ]],
+    amount:  [ 0, [ Validators.required, Validators.min(1)]],
     type: [ 'tre', ]
   })
 
