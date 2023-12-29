@@ -4,9 +4,9 @@ import { IncomeExpenseService } from '../services/income-expense.service';
 import { IncomeExpense } from '../models/income-expenses.model';
 import Swal from 'sweetalert2'
 import { Store } from '@ngrx/store';
-import { AppState } from '../app.reducer';
 import { Subscription } from 'rxjs';
 import * as actionsUi from '../shared/ui.actions';
+import { AppStateWithIncomes } from './income-expense.reducer';
 
 type incomeExpense = 'income' | 'expense';
 
@@ -19,7 +19,7 @@ type incomeExpense = 'income' | 'expense';
 export class IncomeExpensesComponent implements OnInit, OnDestroy {
 
   private incomeExpenseService = inject( IncomeExpenseService );
-  private store = inject( Store<AppState>);
+  private store = inject( Store<AppStateWithIncomes>);
   private $loadingSubs!: Subscription;
 
   public fb = inject( FormBuilder );

@@ -1,10 +1,10 @@
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import { AppState } from 'src/app/app.reducer';
 import { IncomeExpense } from 'src/app/models/income-expenses.model';
 import { IncomeExpenseService } from '../../services/income-expense.service';
 import Swal from 'sweetalert2';
+import { AppStateWithIncomes } from '../income-expense.reducer';
 
 @Component({
   selector: 'app-detail',
@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
 })
 export class DetailComponent implements OnInit, OnDestroy {
 
-  private store = inject( Store<AppState> );
+  private store = inject( Store<AppStateWithIncomes> );
   public items: IncomeExpense[] = [];
   private $incomeSubs!: Subscription;
   private incomeExpenseService = inject( IncomeExpenseService );

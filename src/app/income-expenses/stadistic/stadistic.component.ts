@@ -1,9 +1,8 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/app.reducer';
 import { IncomeExpense } from 'src/app/models/income-expenses.model';
-import { setItems } from '../income-expende.actions';
-import { ChartData, ChartEvent, ChartType } from 'chart.js';
+import { ChartData, ChartType } from 'chart.js';
+import { AppStateWithIncomes } from '../income-expense.reducer';
 
 @Component({
   selector: 'app-stadistic',
@@ -12,7 +11,7 @@ import { ChartData, ChartEvent, ChartType } from 'chart.js';
 })
 export class StadisticComponent implements OnInit {
 
-  private store = inject( Store<AppState> );
+  private store = inject( Store<AppStateWithIncomes> );
 
   incomes : number = 0;
   expenses: number = 0;
